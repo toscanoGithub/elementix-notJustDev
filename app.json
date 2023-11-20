@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "elementix-notJustDev",
+    "slug": "elementix-notJustDev",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
