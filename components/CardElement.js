@@ -2,11 +2,13 @@
 import { Card } from '@rneui/base';
 import React, { Component, } from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { isTablet } from '../helpers/DeviceInfo';
 
 // create a component
 const CardElement = ({ name, number, symbol, category }) => {
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
+
     getCardElementColor = () => {
 
         switch (category) {
@@ -41,12 +43,13 @@ const CardElement = ({ name, number, symbol, category }) => {
             width: windowWidth / 18 - 2,
             backgroundColor: getCardElementColor(category),
             marginHorizontal: 1,
+            height: isTablet() ? 45 : 35,
         }]}>
             {/* actual card element */}
 
             <Text style={styles.number}>{number}</Text>
             <Text style={styles.symbol}>{symbol}</Text>
-            {/* <Text style={styles.name}>{name}</Text> */}
+            {isTablet() == true && <Text style={styles.name}>{name}</Text>}
 
 
 
@@ -69,7 +72,7 @@ const CardElement = ({ name, number, symbol, category }) => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#ffffff',
-        height: 35,
+
         gap: 3,
         marginVertical: 0.5,
 
@@ -83,7 +86,14 @@ const styles = StyleSheet.create({
     },
 
     number: { marginLeft: 2, color: "black", fontSize: 8, },
-    symbol: { color: "#3D474C", alignSelf: "center", fontSize: 10, fontWeight: "bold" }
+    symbol: { color: "#3D474C", alignSelf: "center", fontSize: 10, fontWeight: "bold" },
+    name: {
+        fontSize: 6,
+        textAlign: "center",
+        paddingBottom: 8,
+        color: "#111",
+
+    }
 });
 
 //make this component available to the app
