@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, FlatList, Modal, TouchableHighlight, Dimensions, TouchableOpacity, Pressable, Linking } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Modal, Image, Dimensions, TouchableOpacity, Pressable, Linking } from 'react-native';
 import CardElement from './CardElement';
 import { isTablet } from '../helpers/DeviceInfo';
 import { useEffect, useState } from 'react';
@@ -26,7 +26,10 @@ const Table = ({ elements }) => {
 
     return (
         <View style={[styles.container]}>
+
+            <Image style={{ aspectRatio: 1 }} width={40} source={require("../images/image.png")} />
             <FlatList
+                style={{ marginTop: -60 }}
                 horizontal={false}
                 numColumns={18}
                 data={elements}
@@ -119,8 +122,7 @@ const Table = ({ elements }) => {
 // define your styles
 const styles = StyleSheet.create({
     container: {
-        marginTop: 70,
-        flex: 1,
+        // flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
@@ -214,7 +216,7 @@ const styles = StyleSheet.create({
         marginTop: -20,
         height: "100%",
         zIndex: -1,
-        
+
 
 
 
