@@ -30,18 +30,18 @@ const Home = () => {
                 >
                     <Tab.Item
                         title="Table"
-                        titleStyle={{ fontSize: 28, color: "white" }}
-                        icon={{ size: 26, name: 'grid', type: 'ionicon', color: 'white' }}
+                        titleStyle={{ fontSize: 20, color: "white" }}
+                        icon={{ size: 20, name: 'grid', type: 'ionicon', color: 'white' }}
                     />
                     <Tab.Item
                         title="Cards"
-                        titleStyle={{ fontSize: 28, color: "white" }}
-                        icon={{ size: 26, name: 'card', type: 'ionicon', color: 'white' }}
+                        titleStyle={{ fontSize: 20, color: "white" }}
+                        icon={{ size: 20, name: 'card', type: 'ionicon', color: 'white' }}
                     />
                     <Tab.Item
                         title="Quiz"
-                        titleStyle={{ fontSize: 28, color: "white" }}
-                        icon={{ size: 26, name: 'find-in-page', type: 'MaterialIcons', color: 'white' }}
+                        titleStyle={{ fontSize: 20, color: "white" }}
+                        icon={{ size: 20, name: 'find-in-page', type: 'MaterialIcons', color: 'white' }}
                     />
                 </Tab>
 
@@ -71,10 +71,9 @@ const styles = StyleSheet.create({
     },
     title: {
         color: "#D0D375",
-        fontSize: 30,
+        fontSize: 26,
         textAlign: "center",
-        marginTop: 50,
-        marginBottom: 15,
+        marginTop: 30,
         fontWeight: "bold",
 
     },
