@@ -1,16 +1,19 @@
 //import liraries
 import { Card } from '@rneui/base';
 import React, { Component, } from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Modal } from 'react-native';
 import { isTablet } from '../helpers/DeviceInfo';
+import { getColor } from '../helpers/CardColorProvider';
+import { TapGestureHandler, RotationGestureHandler, GestureHandlerRootView } from 'react-native-gesture-handler';
+import { useState } from 'react';
 
 // create a component
-const CardElement = ({ name, number, symbol, category }) => {
+const CardElement = ({ name, number, symbol, category, handleTap }) => {
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
 
-    getCardElementColor = () => {
 
+    getCardElementColor = () => {
         switch (category) {
             case "nonmetal":
                 return "#FFFFCE"
@@ -38,31 +41,41 @@ const CardElement = ({ name, number, symbol, category }) => {
 
         return "transparent";
     }
+
+    handleShowModal = () => {
+        setmodalVisible(true);
+    }
     return (
-        symbol != null ? <View style={[styles.container, {
-            width: windowWidth / 18 - 2,
-            backgroundColor: getCardElementColor(category),
-            marginHorizontal: 1,
-            height: isTablet() ? 45 : 35,
-        }]}>
-            {/* actual card element */}
+        symbol != null ? <GestureHandlerRootView>
+            <TapGestureHandler onBegan={() => handleTap()}>
+                <View style={[styles.container, {
+                    width: windowWidth / 18 - 2,
+                    backgroundColor: getColor(category),
+                    marginHorizontal: 1,
+                    height: isTablet() ? 45 : 35,
+                }]}>
+                    {/* actual card element */}
 
-            <Text style={styles.number}>{number}</Text>
-            <Text style={styles.symbol}>{symbol}</Text>
-            {isTablet() == true && <Text style={styles.name}>{name}</Text>}
-
-
-
-
+                    <Text style={styles.number}>{number}</Text>
+                    <Text style={styles.symbol}>{symbol}</Text>
+                    {isTablet() == true && <Text style={styles.name}>{name}</Text>}
 
 
 
 
-        </View> : <View style={{
+
+
+
+
+                </View>
+            </TapGestureHandler>
+        </GestureHandlerRootView> : <View style={{
             borderWidth: 0,
             width: windowWidth / 18 - 2,
             marginHorizontal: 1
         }}></View>
+
+
 
     )
 
