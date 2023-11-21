@@ -24,7 +24,7 @@ const TableBuilder = ({ selectedItem }) => {
             borderTopLeftRadius: item.id === 1 ? 10 : 0,
             borderBottomEndRadius: item.id === 6 ? 10 : 0,
             borderBottomStartRadius: item.id === 6 ? 10 : 0,
-            
+
             shadowColor: "#000",
             shadowOffset: {
                 width: 0,
@@ -33,8 +33,8 @@ const TableBuilder = ({ selectedItem }) => {
             shadowOpacity: 0.20,
             shadowRadius: 1.41,
 
-            elevation: 12,
-            
+            elevation: 14,
+
 
         }}>
             <View style={{ width: 200, paddingVertical: 10, justifyContent: "center", }}>
