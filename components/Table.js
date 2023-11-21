@@ -1,11 +1,12 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, FlatList, Modal, TouchableHighlight, Dimensions, TouchableOpacity, Pressable } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Modal, TouchableHighlight, Dimensions, TouchableOpacity, Pressable, Linking } from 'react-native';
 import CardElement from './CardElement';
 import { isTablet } from '../helpers/DeviceInfo';
 import { useEffect, useState } from 'react';
 import { getColor } from '../helpers/CardColorProvider';
 import { Icon } from '@rneui/base';
+import TableBuilder from '../helpers/TableBuilder';
 
 // create a component
 const Table = ({ elements }) => {
@@ -21,6 +22,8 @@ const Table = ({ elements }) => {
         setSelectedItem(item)
         setmodalVisible(true);
     }
+
+
     return (
         <View style={[styles.container]}>
             <FlatList
@@ -43,6 +46,12 @@ const Table = ({ elements }) => {
                     width: windowWidth * 0.9, height: windowHeight * 0.75,
                     backgroundColor: getColor(selectedItem.category), alignSelf: "center",
                     borderRadius: 22,
+                    borderWidth: 2,
+                    borderColor: "#cccccc",
+                    borderBottomStartRadius: 22,
+                    borderBottomEndRadius: 22,
+
+
 
                 }}>
 
@@ -69,10 +78,30 @@ const Table = ({ elements }) => {
                     {/* Category */}
                     <Text style={styles.selectedCategory}>{selectedItem.category}</Text>
 
+                    {/* Summary */}
+                    <View style={styles.selectedSummaryWrapper}>
+                        <Text style={[styles.selectedSummary,]}>{selectedItem.summary.substring(0, 100)} <Text onPress={() => {
+                            const baseUrl = "https://en.wikipedia.org/wiki/"
+                            Linking.openURL(`${baseUrl}${selectedItem.name}`)
+                        }} style={{ color: "red" }}>See more...</Text></Text>
+                    </View>
+
+                    {/* Characteristics */}
+                    <View style={styles.characteristicsWrapper}>
+                        <Text style={styles.characteristicsTitle}>Characteristics</Text>
+
+                        <View style={styles.characteristicsTable}>
+                            <TableBuilder selectedItem={selectedItem} />
+                        </View>
+                    </View>
+
+
+
+
                     {/* Close button */}
                     <View>
                         <Pressable
-                            style={[styles.closeButton, { marginTop: isTablet() ? -200 : -180, }]}
+                            style={[styles.closeButton, { top: -windowHeight * 0.75 + 25 }]}
                             onPress={() => {
                                 setmodalVisible(false);
                             }}>
@@ -94,21 +123,24 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#ffffff',
+        backgroundColor: 'white',
+
     },
 
     closeButton: {
         alignSelf: "flex-end",
-        marginRight: -10,
+        right: -10,
+        top: 10,
         backgroundColor: "red",
         borderRadius: 55,
+
+
     },
 
     symbolNameWrapper: {
 
         borderColor: "white",
-        borderWidth: 3,
-        zIndex: 100,
+        borderWidth: 4,
         backgroundColor: "red",
         alignItems: "center",
         justifyContent: "center",
@@ -127,9 +159,8 @@ const styles = StyleSheet.create({
 
     selectedNumberWrapper: {
         borderColor: "white",
-        borderWidth: 3,
-        zIndex: 100,
-        backgroundColor: "red",
+        borderWidth: 4,
+        backgroundColor: "#3D81AE",
         alignItems: "center",
         justifyContent: "center",
         marginLeft: 90,
@@ -147,6 +178,47 @@ const styles = StyleSheet.create({
         fontSize: 30,
         textAlign: "center",
         marginTop: 30,
+
+    },
+
+    selectedSummaryWrapper: {
+        marginVertical: 30,
+        paddingHorizontal: 10,
+
+
+
+    },
+    selectedSummary: {
+        color: "#111111",
+        fontSize: 18,
+
+    },
+
+
+    characteristicsWrapper: {
+
+        flex: 1,
+
+    },
+    characteristicsTitle: {
+        fontSize: 30,
+        fontWeight: "bold",
+        color: "#3D81AE",
+        marginLeft: 10,
+
+    },
+
+    characteristicsTable: {
+        width: "100%",
+        backgroundColor: "transparent",
+        marginTop: -20,
+        height: "100%",
+        zIndex: -1,
+        
+
+
+
+
 
     }
 });
