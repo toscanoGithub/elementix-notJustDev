@@ -38,11 +38,11 @@ const TableBuilder = ({ selectedItem }) => {
 
         }}>
             <View style={{ width: 200, paddingVertical: 10, justifyContent: "center", }}>
-                <Text style={{ paddingHorizontal: 10, fontSize: 12, fontWeight: 'bold', textAlign: 'left' }}>{item.title}</Text>
+                <Text style={{ paddingLeft: 3, fontSize: 12, fontWeight: 'bold', textAlign: 'left' }}>{item.title}</Text>
             </View>
 
-            <View style={{ width: 150, paddingVertical: 10, justifyContent: "center", }}>
-                <Text style={{ paddingHorizontal: 10, fontSize: 12, fontWeight: 'normal', textAlign: 'left', }}>{item.value}</Text>
+            <View style={{ width: 150, paddingVertical: 10, paddingRight: 50, justifyContent: "center", }}>
+                <Text style={{ fontSize: 10, fontWeight: 'normal', textAlign: 'left', }}>{item.value}</Text>
             </View>
 
 
@@ -51,11 +51,13 @@ const TableBuilder = ({ selectedItem }) => {
 
     )
     return (
-        <View style={{
-            flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: 30
-        }}>
-            <FlatList data={dataTable} renderItem={item} keyExtractor={item => item.id.toString()} />
-        </View>
+
+        <FlatList showsVerticalScrollIndicator={false} style={{
+            marginHorizontal: 10,
+            marginTop: 30,
+
+        }} disableScrollViewPanResponder={false} horizontal={false} data={dataTable} renderItem={item} keyExtractor={item => item.id.toString()} />
+
     )
 };
 
