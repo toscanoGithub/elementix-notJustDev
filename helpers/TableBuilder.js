@@ -33,7 +33,7 @@ const TableBuilder = ({ selectedItem }) => {
             shadowOpacity: 0.20,
             shadowRadius: 1.41,
 
-            elevation: 12,
+            elevation: 14,
 
 
         }}>
