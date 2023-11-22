@@ -2,6 +2,7 @@
 import { CheckBox, } from '@rneui/base';
 import React, { Component, useState } from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import TableForQuiz from './TableForQuiz';
 
 // create a component
 const QuizTab = ({ elements }) => {
@@ -12,26 +13,29 @@ const QuizTab = ({ elements }) => {
     const [lives, setLives] = useState(5)
 
     renderTableForGame = () => {
+
         switch (selectedIndex) {
             case 0:
-                return <Text style={{ color: "white" }}>Easy mode</Text>
+                return <TableForQuiz elements={elements} mode="Easy" />
             case 1:
-                return <Text style={{ color: "white" }}>Medium mode</Text>
+                return <TableForQuiz elements={elements} mode="Medium" />
             case 2:
-                return <Text style={{ color: "white" }}>Hard mode</Text>
+                return <TableForQuiz elements={elements} mode="Hard" />
 
             default:
-                return <Text style={{ color: "white" }}>Easy mode</Text>
+                return <TableForQuiz elements={elements} mode="Easy" />
         }
     }
     return (
         <View style={styles.container}>
             {/* Hud view */}
             <View style={{
-                height: windowHeight * 0.10,
+                height: windowHeight * 0.15,
                 width: "100%",
                 flexDirection: "row",
-                justifyContent: "space-between", alignItems: "center"
+                justifyContent: "space-between", alignItems: "center",
+                backgroundColor: "#3D81AE05",
+
             }}>
                 {/* score and lives wrapper */}
                 <View style={styles.scoresNlives}>
@@ -43,7 +47,7 @@ const QuizTab = ({ elements }) => {
                 <View style={{
                     backgroundColor: "transparent", justifyContent: "center", alignItems: "flex-start",
 
-                    paddingRight: 10, marginTop: 40, rowGap: 10,
+                    paddingRight: 10, marginTop: 0, rowGap: 10,
                 }}>
 
                     {/* label and radio EASY */}
@@ -97,7 +101,10 @@ const QuizTab = ({ elements }) => {
             </View>
 
             {/* instructions view */}
-            <View style={{ justifyContent: "center", alignItems: "flex-start", rowGap: 0 }}>
+            <View style={{
+                justifyContent: "center", alignItems: "flex-start", rowGap: 0,
+                marginVertical: 30
+            }}>
                 <Text style={{ fontSize: 16, }}>Find</Text>
                 <Text style={{ fontWeight: "bold", fontSize: 30, marginTop: -5 }}>Hydrogen</Text>
             </View>
@@ -129,7 +136,7 @@ const styles = StyleSheet.create({
 
     tableView: {
         flex: 1,
-        backgroundColor: "blue",
+        // backgroundColor: "blue",
         width: "100%"
     }
 });
