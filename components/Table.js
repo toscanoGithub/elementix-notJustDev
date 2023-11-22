@@ -10,7 +10,7 @@ import TableBuilder from '../helpers/TableBuilder';
 
 // create a component
 const Table = ({ elements }) => {
-    const [modalVisible, setmodalVisible] = useState(false)
+    const [modalVisible, setmodalVisible] = useState(true)
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
     const [selectedItem, setSelectedItem] = useState(null)
@@ -19,8 +19,14 @@ const Table = ({ elements }) => {
     }, [])
 
     handleTap = (item) => {
+
+
         setSelectedItem(item)
         setmodalVisible(true);
+
+
+
+        // alert(item.name);
     }
 
 
@@ -37,7 +43,7 @@ const Table = ({ elements }) => {
 
             />
 
-            {modalVisible === true && <Modal
+            {selectedItem && <Modal
                 animationType="slide"
                 transparent={true}
                 visible={modalVisible}
@@ -151,7 +157,7 @@ const styles = StyleSheet.create({
 
     selectedSymbol: {
         fontSize: 40,
-        fontWeight: "900",
+        fontWeight: "bold",
 
     },
 
@@ -172,7 +178,7 @@ const styles = StyleSheet.create({
     },
 
     selectedNumber: {
-        color: "white", fontSize: 30, fontWeight: 900,
+        color: "white", fontSize: 30, fontWeight: "bold",
     },
 
     selectedCategory: {

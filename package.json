@@ -1,13 +1,4 @@
 {
-  "name": "elementix-notjustdev",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "expo start --dev-client",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web"
-  },
   "dependencies": {
     "@rneui/base": "^4.0.0-rc.7",
     "@rneui/themed": "^4.0.0-rc.8",
@@ -21,5 +12,14 @@
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
-  "private": true
+  "main": "index.js",
+  "name": "elementix-notjustdev",
+  "private": true,
+  "scripts": {
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "start": "expo start --dev-client",
+    "web": "expo start --web"
+  },
+  "version": "1.0.0"
 }
