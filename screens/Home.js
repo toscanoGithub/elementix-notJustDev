@@ -1,9 +1,10 @@
 //import liraries
 import React, { Component, useEffect, useState } from 'react';
 import { Tab, Text, TabView } from '@rneui/themed';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import * as data from '../data/elements.json';
 import Table from '../components/Table';
+import Cards from '../components/Cards';
 
 // create a component
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
             <View style={styles.appBar}>
                 <Text style={styles.title}>Periodic Table Of Elements</Text>
                 <Tab
+                    disableSwipe
                     width="100%"
                     value={index}
                     onChange={(e) => setIndex(e)}
@@ -50,7 +52,7 @@ const Home = () => {
                         <Table elements={elements} />
                     </TabView.Item>
                     <TabView.Item style={{ backgroundColor: 'white', width: '100%' }}>
-                        <Text h1>Favorite</Text>
+                        {elements && <Cards elements={elements} />}
                     </TabView.Item>
                     <TabView.Item style={{ backgroundColor: 'white', width: '100%' }}>
                         <Text h1>Quiz</Text>

@@ -14,9 +14,7 @@ const Table = ({ elements }) => {
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
     const [selectedItem, setSelectedItem] = useState(null)
-    useEffect(() => {
-        console.log(isTablet());
-    }, [])
+
 
     handleTap = (item) => {
 
@@ -222,11 +220,6 @@ const styles = StyleSheet.create({
         marginTop: -20,
         height: "100%",
         zIndex: -1,
-
-
-
-
-
 
     }
 });
