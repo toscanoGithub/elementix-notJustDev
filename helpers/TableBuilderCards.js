@@ -6,25 +6,25 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 
 
 // create a component
-const TableBuilder = ({ selectedItem }) => {
+const TableBuilderCards = ({ number, name, symbol, category, summary, atomic_mass, density, electron_configuration, electronegativity_pauling, discovered_by }) => {
 
     useEffect(() => {
-        console.log(selectedItem.name || "empty");
-    }, [])
+        console.log(">>>>>", name);
+    }, [name])
 
     const dataTable = [
-        { id: 1, title: "Atomic Number", value: selectedItem.number },
-        { id: 2, title: "Atomic Mass", value: selectedItem.atomic_mass },
-        { id: 3, title: "Density", value: selectedItem.density },
-        { id: 4, title: "Configuration", value: selectedItem.electron_configuration },
-        { id: 5, title: "Electronegativity", value: selectedItem.electronegativity_pauling },
-        { id: 6, title: "Discovered by", value: selectedItem.discovered_by },
+        { id: 1, title: "Atomic Number", value: number },
+        { id: 2, title: "Atomic Mass", value: atomic_mass },
+        { id: 3, title: "Density", value: density },
+        { id: 4, title: "Configuration", value: electron_configuration },
+        { id: 5, title: "Electronegativity", value: electronegativity_pauling },
+        { id: 6, title: "Discovered by", value: discovered_by },
 
 
     ]
     const item = ({ item }) => (
         <View style={{
-            flexDirection: 'row', flex: 1, backgroundColor: item.id % 2 === 0 ? "#FFFFFF" : "#E8E9EF",
+            flexDirection: 'row', backgroundColor: item.id % 2 === 0 ? "#FFFFFF" : "#E8E9EF",
             borderTopRightRadius: item.id === 1 ? 10 : 0,
             borderTopLeftRadius: item.id === 1 ? 10 : 0,
             borderBottomEndRadius: item.id === 6 ? 10 : 0,
@@ -41,11 +41,11 @@ const TableBuilder = ({ selectedItem }) => {
 
 
         }}>
-            <View style={{ width: 200, paddingVertical: 10, justifyContent: "center", }}>
+            <View style={{ width: 150, paddingVertical: 10, justifyContent: "center", }}>
                 <Text style={{ paddingLeft: 3, fontSize: 12, fontWeight: 'bold', textAlign: 'left' }}>{item.title}</Text>
             </View>
 
-            <View style={{ width: 150, paddingVertical: 10, paddingRight: 50, justifyContent: "center", }}>
+            <View style={{ width: 200, paddingVertical: 10, paddingRight: 50, justifyContent: "flex-start", alignItems: "flex-start" }}>
                 <Text style={{ fontSize: 10, fontWeight: 'normal', textAlign: 'left', }}>{item.value}</Text>
             </View>
 
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default TableBuilder;
+export default TableBuilderCards;
