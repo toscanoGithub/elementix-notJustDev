@@ -12,7 +12,6 @@ const CardElement = ({ name, number, symbol, category, handleTap }) => {
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
 
-
     getCardElementColor = () => {
         switch (category) {
             case "nonmetal":

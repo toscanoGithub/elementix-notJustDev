@@ -9,8 +9,8 @@ const TableForQuiz = ({ elements, mode }) => {
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
 
-    handleTap = () => {
-        console.log("tapped");
+    handleTapInQuiz = (item) => {
+        console.log("tapped table for quiz", item.name);
     }
 
 
@@ -21,7 +21,7 @@ const TableForQuiz = ({ elements, mode }) => {
                 horizontal={false}
                 numColumns={18}
                 data={elements}
-                renderItem={({ item }) => <CardElementForQuiz mode={mode} {...item} handleTap={() => handleTap(item)} />}
+                renderItem={({ item }) => <CardElementForQuiz mode={mode} {...item} handleTapInQuiz={() => handleTapInQuiz(item)} />}
             />
         </View>
     );
