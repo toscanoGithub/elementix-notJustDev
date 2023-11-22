@@ -8,7 +8,7 @@ import { TapGestureHandler, RotationGestureHandler, GestureHandlerRootView } fro
 import { useState } from 'react';
 
 // create a component
-const CardElementForQuiz = ({ number, symbol, name, category, mode }) => {
+const CardElementForQuiz = ({ number, symbol, name, category, mode, handleTapInQuiz }) => {
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
 
@@ -37,7 +37,7 @@ const CardElementForQuiz = ({ number, symbol, name, category, mode }) => {
 
     return (
         symbol != null ? <GestureHandlerRootView>
-            <TapGestureHandler onBegan={() => handleTap()}>
+            <TapGestureHandler onBegan={() => handleTapInQuiz()}>
                 <View style={[styles.container, {
                     width: windowWidth / 18 - 2,
                     backgroundColor: getColor(category),

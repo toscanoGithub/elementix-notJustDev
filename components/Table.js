@@ -112,7 +112,7 @@ const Table = ({ elements }) => {
                             onPress={() => {
                                 setmodalVisible(false);
                             }}>
-                            <Icon name='close' size={50} color={"white"} />
+                            <Icon name='close' size={50} color={"red"} />
                         </Pressable>
                     </View>
                 </View>
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
         alignSelf: "flex-end",
         right: -10,
         top: 10,
-        backgroundColor: "red",
+        backgroundColor: "#3D81AE",
         borderRadius: 55,
 
 

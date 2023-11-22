@@ -1,8 +1,9 @@
 //import liraries
 import { CheckBox, } from '@rneui/base';
 import React, { Component, useState } from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, TouchableHighlightComponent, Pressable, TouchableOpacity } from 'react-native';
 import TableForQuiz from './TableForQuiz';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 // create a component
 const QuizTab = ({ elements }) => {
@@ -11,6 +12,7 @@ const QuizTab = ({ elements }) => {
     const [selectedIndex, setIndex] = useState(0);
     const [score, setScore] = useState(0)
     const [lives, setLives] = useState(5)
+    const [targetElement, setTargetElement] = useState(null)
 
     renderTableForGame = () => {
 
@@ -25,6 +27,16 @@ const QuizTab = ({ elements }) => {
             default:
                 return <TableForQuiz elements={elements} mode="Easy" />
         }
+    }
+
+
+    handleStartQuiz = () => {
+        let pickedElement;
+        do {
+            pickedElement = elements[Math.floor(Math.random() * elements.length)];
+            console.log(pickedElement["name"]);
+            setTargetElement(pickedElement["name"])
+        } while (pickedElement["name"] === undefined);
     }
     return (
         <View style={styles.container}>
@@ -100,14 +112,26 @@ const QuizTab = ({ elements }) => {
                 </View>
             </View>
 
-            {/* instructions view */}
-            <View style={{
-                justifyContent: "center", alignItems: "flex-start", rowGap: 0,
-                marginVertical: 30
-            }}>
-                <Text style={{ fontSize: 16, }}>Find</Text>
-                <Text style={{ fontWeight: "bold", fontSize: 30, marginTop: -5 }}>Hydrogen</Text>
-            </View>
+            {
+                targetElement ?
+                    <View View style={{
+                        justifyContent: "center", alignItems: "flex-start", rowGap: 0,
+                        marginVertical: 30,
+                    }}>
+                        <Text style={{ fontSize: 16, }}>Find</Text>
+                        <Text style={{ fontWeight: "bold", fontSize: 30, marginTop: -5 }}>{targetElement}</Text>
+
+                    </View> : <TouchableOpacity
+
+                        onPress={handleStartQuiz}
+                        style={{
+                            paddingHorizontal: 10, paddingVertical: 5,
+                            backgroundColor: "#3D81AE", width: 150, borderRadius: 20,
+                        }}><Text style={{
+                            fontSize: 30, color: "white", fontWeight: "bold", textAlign: "center", letterSpacing: 1
+
+                        }}>Start</Text></TouchableOpacity>
+            }
 
             {/* Table view */}
             <View style={styles.tableView}>
