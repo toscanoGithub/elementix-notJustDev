@@ -5,6 +5,7 @@ import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import * as data from '../data/elements.json';
 import Table from '../components/Table';
 import Cards from '../components/Cards';
+import QuizTab from '../components/Quiz';
 
 // create a component
 const Home = () => {
@@ -55,7 +56,7 @@ const Home = () => {
                         {elements && <Cards elements={elements} />}
                     </TabView.Item>
                     <TabView.Item style={{ backgroundColor: 'white', width: '100%' }}>
-                        <Text h1>Quiz</Text>
+                        <QuizTab elements={elements} />
                     </TabView.Item>
                 </TabView>
             </View>
