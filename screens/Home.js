@@ -17,11 +17,13 @@ const Home = () => {
 
     }, [])
     return (
+
         <View style={styles.container}>
             <View style={styles.appBar}>
                 <Text style={styles.title}>Periodic Table Of Elements</Text>
                 <Tab
-                    disableSwipe
+
+
                     width="100%"
                     value={index}
                     onChange={(e) => setIndex(e)}
@@ -29,7 +31,7 @@ const Home = () => {
                         backgroundColor: '#D0D375',
                         height: 8,
                     }}
-                    variant="default"
+                    variant="primary"
                 >
                     <Tab.Item
                         title="Table"
